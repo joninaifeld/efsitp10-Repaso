@@ -1,0 +1,27 @@
+.pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+}
+
+.pokemon-list__empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #777;
+}
+
+.pokemon-list__empty-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.pokemon-list__empty p {
+  font-size: 1.1rem;
+  margin: 0.4rem 0;
+}
+
+.pokemon-list__empty-hint {
+  font-size: 0.9rem !important;
+  color: #aaa;
+}
