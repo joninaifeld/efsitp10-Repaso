@@ -38,7 +38,7 @@ const Home = ({ favorites, onToggleFavorite }) => {
     setPage(1);
   }, [query, selectedType]);
 
-  // Filtrado con filter() sobre el array en memoria
+  // Filtros
   const filtered = allPokemons.filter((pokemon) => {
     const matchesQuery = pokemon.name.toLowerCase().includes(query.toLowerCase().trim());
     const matchesType =
@@ -70,7 +70,6 @@ const Home = ({ favorites, onToggleFavorite }) => {
           onTypeChange={setSelectedType}
         />
 
-        {/* Renderizado condicional */}
         {loading && (
           <div className="home__status">
             <div className="home__spinner" role="status" aria-label="Cargando" />

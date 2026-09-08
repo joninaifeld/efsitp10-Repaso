@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { getPokemonById } from "../services/api";
 import "./PokemonDetail.css";
 
@@ -26,11 +26,15 @@ const STAT_LABELS = {
 
 const PokemonDetail = ({ favorites, onToggleFavorite }) => {
   const { id } = useParams();
-  const [pokemon, setPokemon] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { state } = useLocation();
+  const [pokemon, setPokemon] = useState(state?.pokemon ?? null);
+  const [loading, setLoading] = useState(!state?.pokemon);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Si ya tenemos el pokemon desde la navegación, no hace falta fetch
+    if (state?.pokemon) return;
+
     const fetchDetail = async () => {
       try {
         setLoading(true);
@@ -46,7 +50,7 @@ const PokemonDetail = ({ favorites, onToggleFavorite }) => {
     };
 
     fetchDetail();
-  }, [id]);
+  }, [id, state?.pokemon]);
 
   if (loading) {
     return (

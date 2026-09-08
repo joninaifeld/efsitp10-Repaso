@@ -43,7 +43,7 @@ const PokemonCard = ({ pokemon, isFavorite, onToggleFavorite }) => {
 
   return (
     <article className="pokemon-card">
-      <Link to={`/pokemon/${id}`} className="pokemon-card__link">
+      <Link to={`/pokemon/${id}`} state={{ pokemon }} className="pokemon-card__link">
         <div className="pokemon-card__image-wrapper">
           <img
             src={imageUrl}
